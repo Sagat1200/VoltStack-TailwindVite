@@ -4,12 +4,12 @@
 
 ---
 
-# Introducción
+# IntroducciÃƒÂ³n
 
-VoltStack TailwindVite es el sistema oficial de integración frontend para VoltStack encargado de proporcionar:
+VoltStack TailwindVite es el sistema oficial de integraciÃƒÂ³n frontend para VoltStack encargado de proporcionar:
 
-* integración TailwindCSS
-* integración Vite
+* integraciÃƒÂ³n TailwindCSS
+* integraciÃƒÂ³n Vite
 * asset pipeline
 * hot reload
 * manifest resolution
@@ -19,7 +19,7 @@ El paquete funciona como una capa de infraestructura frontend desacoplada del ru
 
 ---
 
-# Filosofía Arquitectónica
+# FilosofÃƒÂ­a ArquitectÃƒÂ³nica
 
 La arquitectura del paquete sigue los principios fundamentales de VoltStack:
 
@@ -32,7 +32,7 @@ La arquitectura del paquete sigue los principios fundamentales de VoltStack:
 
 ---
 
-# Objetivo Arquitectónico
+# Objetivo ArquitectÃƒÂ³nico
 
 El objetivo principal es construir una infraestructura frontend que pueda evolucionar posteriormente hacia:
 
@@ -47,7 +47,7 @@ sin romper compatibilidad interna.
 
 ---
 
-# Principios Arquitectónicos
+# Principios ArquitectÃƒÂ³nicos
 
 ## 1. Frontend desacoplado
 
@@ -78,7 +78,7 @@ Cada parte del sistema debe ser independiente:
 
 ---
 
-## 4. Integración nativa con Volt
+## 4. IntegraciÃƒÂ³n nativa con Volt
 
 El sistema se integra directamente con:
 
@@ -107,27 +107,27 @@ sin reescribir el sistema base.
 
 ```text id="p7z0ff"
 Volt Compiler
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Frontend Integration Layer
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 FrontendManager
-│
-├── ViteManager
-├── TailwindManager
-├── AssetManager
-├── ManifestManager
-├── HotReloadManager
-├── EnvironmentDetector
-└── FrontendConfigRepository
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ViteManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ TailwindManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ AssetManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ManifestManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ HotReloadManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ EnvironmentDetector
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ FrontendConfigRepository
 ```
 
 ---
 
-# Capas Arquitectónicas
+# Capas ArquitectÃƒÂ³nicas
 
-## Layer 1 — Volt Integration Layer
+## Layer 1 Ã¢â‚¬â€ Volt Integration Layer
 
 Responsable de integrar el paquete con el compilador Volt.
 
@@ -141,21 +141,21 @@ Responsable de integrar el paquete con el compilador Volt.
 
 ---
 
-## Layer 2 — Frontend Core Layer
+## Layer 2 Ã¢â‚¬â€ Frontend Core Layer
 
-Núcleo principal del paquete.
+NÃƒÂºcleo principal del paquete.
 
 ### Responsabilidades
 
-* coordinación interna
-* resolución de assets
+* coordinaciÃƒÂ³n interna
+* resoluciÃƒÂ³n de assets
 * manifest loading
 * vite integration
 * environment switching
 
 ---
 
-## Layer 3 — Infrastructure Layer
+## Layer 3 Ã¢â‚¬â€ Infrastructure Layer
 
 Responsable de sistemas de infraestructura frontend.
 
@@ -177,7 +177,7 @@ Responsable de sistemas de infraestructura frontend.
 
 ## Responsabilidad
 
-Es el núcleo central del sistema frontend.
+Es el nÃƒÂºcleo central del sistema frontend.
 
 Coordina todos los managers internos.
 
@@ -190,18 +190,18 @@ Coordina todos los managers internos.
 * cargar manifest
 * coordinar hot reload
 * cargar frontend runtime
-* exponer API pública
+* exponer API pÃƒÂºblica
 
 ---
 
 ## Ejemplo conceptual
 
 ```php id="8z2r48"
-frontend()->asset('app.js');
+tailwind_vite()->asset('app.js');
 
-frontend()->manifest();
+tailwind_vite()->manifest();
 
-frontend()->isDevelopment();
+tailwind_vite()->isDevelopment();
 ```
 
 ---
@@ -210,7 +210,7 @@ frontend()->isDevelopment();
 
 ## Responsabilidad
 
-Gestionar toda la integración Vite.
+Gestionar toda la integraciÃƒÂ³n Vite.
 
 ---
 
@@ -228,13 +228,13 @@ Gestionar toda la integración Vite.
 
 ## Responsabilidad
 
-Gestionar integración TailwindCSS.
+Gestionar integraciÃƒÂ³n TailwindCSS.
 
 ---
 
 ## Responsabilidades
 
-* configuración Tailwind
+* configuraciÃƒÂ³n Tailwind
 * app.css
 * scan paths
 * theme integration
@@ -306,7 +306,7 @@ Resolver el entorno actual.
 ## Responsabilidades
 
 * detectar desarrollo
-* detectar producción
+* detectar producciÃƒÂ³n
 * detectar build mode
 * detectar dev server
 
@@ -316,78 +316,78 @@ Resolver el entorno actual.
 
 ## Responsabilidad
 
-Gestionar configuración frontend.
+Gestionar configuraciÃƒÂ³n frontend.
 
 ---
 
 ## Responsabilidades
 
-* cargar configuración
+* cargar configuraciÃƒÂ³n
 * defaults
 * paths
 * frontend settings
 
 ---
 
-# Flujo Arquitectónico
+# Flujo ArquitectÃƒÂ³nico
 
 # Desarrollo
 
 ```text id="lh93a5"
 Volt View
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Volt Compiler
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 HotReloadManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Vite Dev Server
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Frontend Assets
 ```
 
 ---
 
-# Producción
+# ProducciÃƒÂ³n
 
 ```text id="km45a2"
 Volt View
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Volt Compiler
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 ManifestManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 manifest.json
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Compiled Assets
 ```
 
 ---
 
-# Integración con Volt Compiler
+# IntegraciÃƒÂ³n con Volt Compiler
 
-El paquete NO interactúa directamente con HTML plano.
+El paquete NO interactÃƒÂºa directamente con HTML plano.
 
-Toda integración ocurre mediante:
+Toda integraciÃƒÂ³n ocurre mediante:
 
 * Volt directives
 * Volt tags
@@ -401,7 +401,7 @@ Toda integración ocurre mediante:
 ## Directiva principal
 
 ```volt id="0w08jy"
-@frontend
+@tailwind-vite
 ```
 
 ---
@@ -414,9 +414,9 @@ Toda integración ocurre mediante:
 
 ---
 
-# Responsabilidad de integración
+# Responsabilidad de integraciÃƒÂ³n
 
-La integración debe:
+La integraciÃƒÂ³n debe:
 
 * detectar entorno
 * resolver assets
@@ -427,28 +427,28 @@ La integración debe:
 
 ---
 
-# API Pública
+# API PÃƒÂºblica
 
 ## Helper global
 
 ```php id="gvl1c0"
-frontend()
+tailwind_vite()
 ```
 
 ---
 
-## Métodos
+## MÃƒÂ©todos
 
 ```php id="4mjlwm"
-frontend()->asset('app.js');
+tailwind_vite()->asset('app.js');
 
-frontend()->manifest();
+tailwind_vite()->manifest();
 
-frontend()->hotReload();
+tailwind_vite()->hotReload();
 
-frontend()->isDevelopment();
+tailwind_vite()->isDevelopment();
 
-frontend()->isProduction();
+tailwind_vite()->isProduction();
 ```
 
 ---
@@ -457,16 +457,16 @@ frontend()->isProduction();
 
 ```text id="gsbyf1"
 src/
-│
-├── Commands/
-├── Config/
-├── Contracts/
-├── Frontend/
-├── Directives/
-├── Support/
-├── Helpers/
-├── Providers/
-└── Stubs/
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Commands/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Config/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Contracts/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Frontend/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Directives/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Support/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Helpers/
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Providers/
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ Stubs/
 ```
 
 ---
@@ -493,19 +493,19 @@ EnvironmentDetectorInterface
 
 ```text id="q04r0d"
 Asset Request
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 FrontendManager
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 EnvironmentDetector
-        │
-        ├── Development
-        │       ▼
-        │   HotReloadManager
-        │
-        └── Production
-                ▼
+        Ã¢â€â€š
+        Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Development
+        Ã¢â€â€š       Ã¢â€“Â¼
+        Ã¢â€â€š   HotReloadManager
+        Ã¢â€â€š
+        Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ Production
+                Ã¢â€“Â¼
             ManifestManager
 ```
 
@@ -534,19 +534,19 @@ El sistema HMR debe:
 
 ---
 
-# Decisiones Arquitectónicas
+# Decisiones ArquitectÃƒÂ³nicas
 
 ## 1. No acoplar Vite directamente al compiler
 
 El compilador Volt solamente expone hooks.
 
-La resolución frontend pertenece al FrontendManager.
+La resoluciÃƒÂ³n frontend pertenece al FrontendManager.
 
 ---
 
 ## 2. No mezclar runtime SPA
 
-El paquete únicamente maneja infraestructura frontend.
+El paquete ÃƒÂºnicamente maneja infraestructura frontend.
 
 No maneja:
 
@@ -559,13 +559,13 @@ No maneja:
 
 ## 3. No depender de framework JS
 
-La arquitectura debe permanecer agnóstica.
+La arquitectura debe permanecer agnÃƒÂ³stica.
 
 ---
 
 # Escalabilidad futura
 
-La arquitectura permitirá posteriormente:
+La arquitectura permitirÃƒÂ¡ posteriormente:
 
 ```text id="vop24f"
 Volt SSR
@@ -584,23 +584,23 @@ sin romper compatibilidad.
 
 ## SSR
 
-El sistema manifest será reutilizado por SSR.
+El sistema manifest serÃƒÂ¡ reutilizado por SSR.
 
 ---
 
 ## Hydration
 
-Los assets serán reutilizados por el runtime hydration.
+Los assets serÃƒÂ¡n reutilizados por el runtime hydration.
 
 ---
 
 ## Native UI
 
-Volt Native UI utilizará el pipeline frontend existente.
+Volt Native UI utilizarÃƒÂ¡ el pipeline frontend existente.
 
 ---
 
-# Estado Arquitectónico
+# Estado ArquitectÃƒÂ³nico
 
 ```text id="u0k5mz"
 Status: Draft V1

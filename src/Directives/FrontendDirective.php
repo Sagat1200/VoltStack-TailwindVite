@@ -13,9 +13,9 @@ final class FrontendDirective implements DirectiveContract
         $expression = trim((string) $expression);
 
         if ($expression === '') {
-            return '<?php echo frontend()->render(); ?>';
+            return '<?php echo tailwind_vite()->render(); ?>';
         }
 
-        return sprintf('<?php echo frontend()->render(%s); ?>', $expression);
+        return sprintf('<?php echo tailwind_vite()->render(%s); ?>', $expression);
     }
 }

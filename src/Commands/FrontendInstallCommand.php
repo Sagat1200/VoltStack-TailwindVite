@@ -81,7 +81,7 @@ final class FrontendInstallCommand extends Command
         $output->writeln('Siguientes pasos:');
         $output->writeln('  1. npm install');
         $output->writeln('  2. npm run dev');
-        $output->writeln('  3. Agrega @frontend dentro de tu layout principal.');
+        $output->writeln('  3. Agrega @tailwind-vite dentro de tu layout principal.');
 
         return 0;
     }

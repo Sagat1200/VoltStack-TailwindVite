@@ -1,17 +1,17 @@
 # 04_ASSET_PIPELINE.md
 
-# VoltStack TailwindVite — Asset Pipeline
+# VoltStack TailwindVite Ã¢â‚¬â€ Asset Pipeline
 
 ---
 
-# Introducción
+# IntroducciÃƒÂ³n
 
 El Asset Pipeline de VoltStack TailwindVite es el sistema encargado de gestionar todo el ciclo de vida de los assets frontend dentro de VoltStack.
 
 El pipeline es responsable de:
 
-* resolución de assets
-* compilación frontend
+* resoluciÃƒÂ³n de assets
+* compilaciÃƒÂ³n frontend
 * manifest loading
 * hot reload
 * environment switching
@@ -21,9 +21,9 @@ El pipeline es responsable de:
 
 ---
 
-# Filosofía del Pipeline
+# FilosofÃƒÂ­a del Pipeline
 
-El sistema de assets está diseñado bajo los principios:
+El sistema de assets estÃƒÂ¡ diseÃƒÂ±ado bajo los principios:
 
 * desacoplamiento
 * modularidad
@@ -38,12 +38,12 @@ El sistema de assets está diseñado bajo los principios:
 
 ## Objetivos principales
 
-* Resolver assets automáticamente
-* Separar desarrollo y producción
+* Resolver assets automÃƒÂ¡ticamente
+* Separar desarrollo y producciÃƒÂ³n
 * Integrar Vite con Volt
-* Resolver manifest dinámicamente
+* Resolver manifest dinÃƒÂ¡micamente
 * Soportar HMR
-* Permitir evolución futura hacia:
+* Permitir evoluciÃƒÂ³n futura hacia:
 
   * SSR
   * Hydration
@@ -56,25 +56,25 @@ El sistema de assets está diseñado bajo los principios:
 
 ```text id="q91p2j"
 Volt View
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Volt Compiler
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Environment Detection
-    │
-    ├── Development
-    │       ▼
-    │   HotReload Pipeline
-    │
-    └── Production
-            ▼
+    Ã¢â€â€š
+    Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Development
+    Ã¢â€â€š       Ã¢â€“Â¼
+    Ã¢â€â€š   HotReload Pipeline
+    Ã¢â€â€š
+    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ Production
+            Ã¢â€“Â¼
         Manifest Pipeline
 ```
 
@@ -84,13 +84,13 @@ Environment Detection
 
 ```text id="6ys8pv"
 FrontendManager
-│
-├── EnvironmentDetector
-├── AssetManager
-├── ManifestManager
-├── HotReloadManager
-├── ViteManager
-└── AssetRenderer
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ EnvironmentDetector
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ AssetManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ManifestManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ HotReloadManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ViteManager
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ AssetRenderer
 ```
 
 ---
@@ -176,7 +176,7 @@ Gestionar assets en desarrollo.
 * detectar vite dev server
 * generar urls HMR
 * inyectar vite client
-* resolver assets dinámicos
+* resolver assets dinÃƒÂ¡micos
 
 ---
 
@@ -205,23 +205,23 @@ Generar HTML final de assets.
 
 ```text id="00d4i6"
 Volt View
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 EnvironmentDetector
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 HotReloadManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 AssetRenderer
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Generated HMR Assets
 ```
 
@@ -237,7 +237,7 @@ Generated HMR Assets
 
 ---
 
-# Características desarrollo
+# CaracterÃƒÂ­sticas desarrollo
 
 ## HMR
 
@@ -248,7 +248,7 @@ Generated HMR Assets
 
 ---
 
-## Assets dinámicos
+## Assets dinÃƒÂ¡micos
 
 Los assets son servidos directamente por:
 
@@ -258,31 +258,31 @@ Vite Dev Server
 
 ---
 
-# Pipeline en Producción
+# Pipeline en ProducciÃƒÂ³n
 
 ---
 
-# Flujo producción
+# Flujo producciÃƒÂ³n
 
 ```text id="pavihv"
 Volt View
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 EnvironmentDetector
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 ManifestManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 AssetRenderer
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Compiled Assets
 ```
 
@@ -300,11 +300,11 @@ Compiled Assets
 
 # Manifest System
 
-El manifest es el núcleo del pipeline en producción.
+El manifest es el nÃƒÂºcleo del pipeline en producciÃƒÂ³n.
 
 ---
 
-# Ubicación oficial
+# UbicaciÃƒÂ³n oficial
 
 ```text id="ff2vj6"
 public/build/.vite/manifest.json
@@ -344,14 +344,14 @@ public/build/.vite/manifest.json
 
 ---
 
-# Resolución de Assets
+# ResoluciÃƒÂ³n de Assets
 
 ---
 
 # Asset Request
 
 ```php id="sqrybs"
-frontend()->asset('app.js');
+tailwind_vite()->asset('app.js');
 ```
 
 ---
@@ -360,19 +360,19 @@ frontend()->asset('app.js');
 
 ```text id="m9nkmu"
 Asset Request
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 AssetManager
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 EnvironmentDetector
-        │
-        ├── Development
-        │       ▼
-        │   HotReloadManager
-        │
-        └── Production
-                ▼
+        Ã¢â€â€š
+        Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Development
+        Ã¢â€â€š       Ã¢â€“Â¼
+        Ã¢â€â€š   HotReloadManager
+        Ã¢â€â€š
+        Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ Production
+                Ã¢â€“Â¼
             ManifestManager
 ```
 
@@ -392,7 +392,7 @@ EnvironmentDetector
 
 ---
 
-## Producción
+## ProducciÃƒÂ³n
 
 ```html id="x0emlz"
 <link rel="stylesheet" href="/build/assets/app.a82d.css">
@@ -410,7 +410,7 @@ EnvironmentDetector
 
 ---
 
-## Producción
+## ProducciÃƒÂ³n
 
 ```html id="tbgjlwm"
 <script type="module" src="/build/assets/app.92ks.js"></script>
@@ -420,7 +420,7 @@ EnvironmentDetector
 
 # Chunk Resolution
 
-El pipeline debe resolver automáticamente:
+El pipeline debe resolver automÃƒÂ¡ticamente:
 
 * vendor chunks
 * dynamic imports
@@ -433,14 +433,14 @@ El pipeline debe resolver automáticamente:
 
 ```text id="qsn5qo"
 Manifest
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Chunk Resolver
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Dependency Graph
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Generated Assets
 ```
 
@@ -458,7 +458,7 @@ import('./dashboard.js');
 
 # Responsabilidades
 
-* resolver chunk dinámico
+* resolver chunk dinÃƒÂ¡mico
 * resolver dependencias
 * preload opcional
 * lazy loading
@@ -483,11 +483,11 @@ El manifest debe cachearse para evitar:
 
 ```text id="djlwm4"
 manifest.json
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Manifest Cache
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Resolved Assets
 ```
 
@@ -495,10 +495,10 @@ Resolved Assets
 
 # Asset Injection
 
-La inyección ocurre mediante:
+La inyecciÃƒÂ³n ocurre mediante:
 
 ```volt id="9whzhw"
-@frontend
+@tailwind-vite
 ```
 
 o:
@@ -509,7 +509,7 @@ o:
 
 ---
 
-# Responsabilidades de inyección
+# Responsabilidades de inyecciÃƒÂ³n
 
 * detectar entorno
 * resolver assets
@@ -523,17 +523,17 @@ o:
 
 ```text id="g2n6k7"
 Volt Compiler
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Frontend Directive
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 FrontendManager
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Asset Pipeline
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Generated HTML
 ```
 
@@ -547,28 +547,28 @@ Generated HTML
 
 ```text id="p24ncz"
 resources/
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Vite Dev Server
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Hot Assets
 ```
 
 ---
 
-# Producción
+# ProducciÃƒÂ³n
 
 ```text id="r4w1pj"
 resources/
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Vite Build
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Compiled Assets
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 manifest.json
 ```
 
@@ -595,7 +595,7 @@ resources/css/app.css
 
 # Future-ready Architecture
 
-El pipeline está preparado para:
+El pipeline estÃƒÂ¡ preparado para:
 
 ---
 
@@ -639,13 +639,13 @@ Runtime Injection
 
 ---
 
-# Restricciones Arquitectónicas
+# Restricciones ArquitectÃƒÂ³nicas
 
 ---
 
 # 1. Volt Compiler NO resuelve assets
 
-Toda resolución pertenece al:
+Toda resoluciÃƒÂ³n pertenece al:
 
 ```text id="p1jlwm"
 FrontendManager
@@ -655,7 +655,7 @@ FrontendManager
 
 # 2. ManifestManager NO renderiza HTML
 
-La renderización pertenece a:
+La renderizaciÃƒÂ³n pertenece a:
 
 ```text id="j7yd93"
 AssetRenderer
@@ -680,23 +680,23 @@ Debe trabajar con assets abstractos.
 ## Helper principal
 
 ```php id="4cg48m"
-frontend()
+tailwind_vite()
 ```
 
 ---
 
-# Métodos
+# MÃƒÂ©todos
 
 ```php id="a3rx6n"
-frontend()->asset();
+tailwind_vite()->asset();
 
-frontend()->render();
+tailwind_vite()->render();
 
-frontend()->manifest();
+tailwind_vite()->manifest();
 
-frontend()->isDevelopment();
+tailwind_vite()->isDevelopment();
 
-frontend()->hotReload();
+tailwind_vite()->hotReload();
 ```
 
 ---

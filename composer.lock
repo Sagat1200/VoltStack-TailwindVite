@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa3d43b9e8c5d31de5445f44998c788d",
-    "packages": [],
+    "content-hash": "0772c04a8dace326a07c91939d23232c",
+    "packages": [
+        {
+            "name": "voltstack/framework",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../voltstack-framework",
+                "reference": "9a4a393ea3f3ea42c34c6e749044d95ac049ea25"
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^13.1"
+            },
+            "bin": [
+                "volt"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "VoltStack\\Framework\\": "src/Platform",
+                    "VoltStack\\Facade\\": "src/Facades",
+                    "VoltStack\\Helper\\": "src/Helper",
+                    "Quantum\\": "src/Quantum",
+                    "VoltStack\\Runtime\\": "src/Runtime",
+                    "VoltStack\\Support\\": "src/Support",
+                    "VoltStack\\Testing\\": "src/Testing"
+                },
+                "files": [
+                    "src/Helper/helpers.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "VoltStack\\Test\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Francisco J. Morales",
+                    "email": "francisco.morales@voltstack.net"
+                }
+            ],
+            "description": "The High Performance & Reactive Framework for PHP",
+            "homepage": "https://voltstack.net",
+            "keywords": [
+                "framework",
+                "php",
+                "voltstack"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        }
+    ],
     "packages-dev": [
         {
             "name": "myclabs/deep-copy",
@@ -1930,7 +1994,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "voltstack/framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

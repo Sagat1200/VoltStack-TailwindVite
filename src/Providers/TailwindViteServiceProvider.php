@@ -35,8 +35,8 @@ final class TailwindViteServiceProvider extends ServiceProvider
     {
         $registry = $this->app->make(DirectiveRegistry::class);
 
-        if (! $registry->has('frontend')) {
-            $registry->register('frontend', new FrontendDirective());
+        if (! $registry->has('tailwind-vite')) {
+            $registry->register('tailwind-vite', new FrontendDirective());
         }
     }
 

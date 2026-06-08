@@ -1,43 +1,43 @@
 # 03_VOLT_INTEGRATION.md
 
-# VoltStack TailwindVite — Volt Integration
+# VoltStack TailwindVite Ã¢â‚¬â€ Volt Integration
 
 ---
 
-# Introducción
+# IntroducciÃƒÂ³n
 
-VoltStack TailwindVite se integra directamente con el sistema de vistas y compilación de VoltStack mediante el compilador oficial:
+VoltStack TailwindVite se integra directamente con el sistema de vistas y compilaciÃƒÂ³n de VoltStack mediante el compilador oficial:
 
 ```text id="6m0vq5"
 Volt Compiler
 ```
 
-La integración permite que las vistas Volt puedan:
+La integraciÃƒÂ³n permite que las vistas Volt puedan:
 
 * cargar assets frontend
 * resolver manifest
 * habilitar hot reload
 * cargar Vite runtime
 * resolver assets compilados
-* integrar TailwindCSS automáticamente
+* integrar TailwindCSS automÃƒÂ¡ticamente
 
 sin acoplar el compilador directamente a Vite o Tailwind.
 
 ---
 
-# Filosofía de Integración
+# FilosofÃƒÂ­a de IntegraciÃƒÂ³n
 
-La integración frontend debe seguir los principios arquitectónicos de VoltStack:
+La integraciÃƒÂ³n frontend debe seguir los principios arquitectÃƒÂ³nicos de VoltStack:
 
 * desacoplamiento
-* compilación declarativa
+* compilaciÃƒÂ³n declarativa
 * runtime limpio
 * frontend abstracto
 * render pipeline modular
 
 ---
 
-# Objetivo de la Integración
+# Objetivo de la IntegraciÃƒÂ³n
 
 El objetivo principal es permitir que el compilador Volt pueda interactuar con el sistema frontend mediante:
 
@@ -50,39 +50,39 @@ sin depender directamente de Vite.
 
 ---
 
-# Arquitectura de Integración
+# Arquitectura de IntegraciÃƒÂ³n
 
 ```text id="0e0mfr"
 Volt Views
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Volt Compiler
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Volt Frontend Directives
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Frontend Integration Layer
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 TailwindVite Infrastructure
 ```
 
 ---
 
-# Integración por Directivas
+# IntegraciÃƒÂ³n por Directivas
 
-La integración principal ocurre mediante directivas Volt.
+La integraciÃƒÂ³n principal ocurre mediante directivas Volt.
 
 ---
 
 # Directiva principal
 
 ```volt id="3u4cz8"
-@frontend
+@tailwind-vite
 ```
 
 ---
@@ -92,7 +92,7 @@ La integración principal ocurre mediante directivas Volt.
 La directiva:
 
 ```volt id="m3xskq"
-@frontend
+@tailwind-vite
 ```
 
 debe:
@@ -115,7 +115,7 @@ debe:
 
 <head>
 
-    @frontend
+    @tailwind-vite
 
 </head>
 
@@ -140,7 +140,7 @@ debe:
 
 ---
 
-# Resultado en producción
+# Resultado en producciÃƒÂ³n
 
 ```html id="dr7z9h"
 <link rel="stylesheet" href="/build/assets/app.8x2d.css">
@@ -150,9 +150,9 @@ debe:
 
 ---
 
-# Integración mediante Tags
+# IntegraciÃƒÂ³n mediante Tags
 
-Volt también soportará integración mediante tags.
+Volt tambiÃƒÂ©n soportarÃƒÂ¡ integraciÃƒÂ³n mediante tags.
 
 ---
 
@@ -169,10 +169,10 @@ Volt también soportará integración mediante tags.
 El tag proporciona:
 
 * sintaxis declarativa
-* mejor integración visual
+* mejor integraciÃƒÂ³n visual
 * soporte futuro para atributos
 * extensibilidad SSR
-* integración hydration
+* integraciÃƒÂ³n hydration
 
 ---
 
@@ -188,32 +188,32 @@ El tag proporciona:
 
 ---
 
-# Integración con el Volt Compiler
+# IntegraciÃƒÂ³n con el Volt Compiler
 
-La integración NO ocurre directamente en runtime.
+La integraciÃƒÂ³n NO ocurre directamente en runtime.
 
-Ocurre durante el proceso de compilación.
+Ocurre durante el proceso de compilaciÃƒÂ³n.
 
 ---
 
-# Flujo de compilación
+# Flujo de compilaciÃƒÂ³n
 
 ```text id="mww9mu"
 Volt Template
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Volt Parser
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Directive Resolver
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Frontend Compiler Hook
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 FrontendManager
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Generated HTML
 ```
 
@@ -221,7 +221,7 @@ Generated HTML
 
 # Compiler Hooks
 
-El compilador Volt expondrá hooks oficiales para integración frontend.
+El compilador Volt expondrÃƒÂ¡ hooks oficiales para integraciÃƒÂ³n frontend.
 
 ---
 
@@ -253,7 +253,7 @@ class FrontendDirective
 {
     public function compile(): string
     {
-        return frontend()->render();
+        return tailwind_vite()->render();
     }
 }
 ```
@@ -262,7 +262,7 @@ class FrontendDirective
 
 # Render Pipeline
 
-La integración frontend utiliza el pipeline oficial Volt.
+La integraciÃƒÂ³n frontend utiliza el pipeline oficial Volt.
 
 ---
 
@@ -270,20 +270,20 @@ La integración frontend utiliza el pipeline oficial Volt.
 
 ```text id="d60lbv"
 Volt Template
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Volt Compiler
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Directive Compilation
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Frontend Resolution
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 HTML Injection
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 Compiled View
 ```
 
@@ -291,7 +291,7 @@ Compiled View
 
 # Frontend Resolution
 
-El sistema frontend debe resolver automáticamente:
+El sistema frontend debe resolver automÃƒÂ¡ticamente:
 
 * entorno
 * manifest
@@ -309,45 +309,45 @@ El sistema frontend debe resolver automáticamente:
 
 ```text id="1svihw"
 Volt View
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 FrontendManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 HotReloadManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Vite Dev Server
 ```
 
 ---
 
-# Producción
+# ProducciÃƒÂ³n
 
-## Flujo producción
+## Flujo producciÃƒÂ³n
 
 ```text id="ajc6lf"
 Volt View
-    │
-    ▼
-@frontend
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
+@tailwind-vite
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 ManifestManager
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 manifest.json
-    │
-    ▼
+    Ã¢â€â€š
+    Ã¢â€“Â¼
 Compiled Assets
 ```
 
 ---
 
-# Integración con Runtime Volt
+# IntegraciÃƒÂ³n con Runtime Volt
 
 El compilador Volt NO debe conocer detalles internos de:
 
@@ -356,11 +356,11 @@ El compilador Volt NO debe conocer detalles internos de:
 * manifest
 * HMR
 
-Toda resolución pertenece al sistema frontend.
+Toda resoluciÃƒÂ³n pertenece al sistema frontend.
 
 ---
 
-# Separación de responsabilidades
+# SeparaciÃƒÂ³n de responsabilidades
 
 ## Volt Compiler
 
@@ -384,28 +384,28 @@ Responsable de:
 
 ---
 
-# API Pública
+# API PÃƒÂºblica
 
 ## Helper
 
 ```php id="4udj5h"
-frontend()
+tailwind_vite()
 ```
 
 ---
 
-# Métodos principales
+# MÃƒÂ©todos principales
 
 ```php id="tw4qff"
-frontend()->render();
+tailwind_vite()->render();
 
-frontend()->asset('app.js');
+tailwind_vite()->asset('app.js');
 
-frontend()->manifest();
+tailwind_vite()->manifest();
 
-frontend()->isDevelopment();
+tailwind_vite()->isDevelopment();
 
-frontend()->hotReload();
+tailwind_vite()->hotReload();
 ```
 
 ---
@@ -415,14 +415,14 @@ frontend()->hotReload();
 ## Ejemplo conceptual
 
 ```php id="n5m1di"
-frontend()->render();
+tailwind_vite()->render();
 ```
 
 ---
 
 # Responsabilidad
 
-Debe generar automáticamente:
+Debe generar automÃƒÂ¡ticamente:
 
 ## Desarrollo
 
@@ -434,7 +434,7 @@ Debe generar automáticamente:
 
 ---
 
-## Producción
+## ProducciÃƒÂ³n
 
 ```html id="5w49jt"
 <link rel="stylesheet" href="/build/assets/app.css">
@@ -444,9 +444,9 @@ Debe generar automáticamente:
 
 ---
 
-# Integración con Volt Runtime
+# IntegraciÃƒÂ³n con Volt Runtime
 
-La integración futura permitirá:
+La integraciÃƒÂ³n futura permitirÃƒÂ¡:
 
 * hydration
 * runtime assets
@@ -456,9 +456,9 @@ La integración futura permitirá:
 
 ---
 
-# Integración SSR futura
+# IntegraciÃƒÂ³n SSR futura
 
-La arquitectura está preparada para:
+La arquitectura estÃƒÂ¡ preparada para:
 
 ```text id="8tbkg0"
 Volt SSR
@@ -470,22 +470,22 @@ Volt SSR
 
 ```text id="8z33t4"
 SSR Renderer
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 FrontendManager
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 SSR Manifest
-        │
-        ▼
+        Ã¢â€â€š
+        Ã¢â€“Â¼
 SSR Assets
 ```
 
 ---
 
-# Integración futura con Native UI
+# IntegraciÃƒÂ³n futura con Native UI
 
-El sistema Native UI reutilizará:
+El sistema Native UI reutilizarÃƒÂ¡:
 
 * asset pipeline
 * manifest
@@ -494,9 +494,9 @@ El sistema Native UI reutilizará:
 
 ---
 
-# Integración futura con Hydration
+# IntegraciÃƒÂ³n futura con Hydration
 
-El runtime hydration utilizará:
+El runtime hydration utilizarÃƒÂ¡:
 
 * frontend manifest
 * runtime chunks
@@ -505,9 +505,9 @@ El runtime hydration utilizará:
 
 ---
 
-# Integración futura con Islands
+# IntegraciÃƒÂ³n futura con Islands
 
-Las islands reutilizarán:
+Las islands reutilizarÃƒÂ¡n:
 
 * chunk resolver
 * manifest loader
@@ -515,13 +515,13 @@ Las islands reutilizarán:
 
 ---
 
-# Restricciones Arquitectónicas
+# Restricciones ArquitectÃƒÂ³nicas
 
 ---
 
 # 1. Volt Compiler NO debe depender de Vite
 
-El compilador únicamente expone hooks.
+El compilador ÃƒÂºnicamente expone hooks.
 
 ---
 
@@ -531,9 +531,9 @@ Debe integrarse mediante APIs oficiales.
 
 ---
 
-# 3. FrontendManager es el único punto de entrada
+# 3. FrontendManager es el ÃƒÂºnico punto de entrada
 
-Toda resolución frontend debe pasar por:
+Toda resoluciÃƒÂ³n frontend debe pasar por:
 
 ```php id="e9a5o8"
 FrontendManager
@@ -541,9 +541,9 @@ FrontendManager
 
 ---
 
-# 4. Las directivas Volt NO contienen lógica compleja
+# 4. Las directivas Volt NO contienen lÃƒÂ³gica compleja
 
-La lógica pertenece a:
+La lÃƒÂ³gica pertenece a:
 
 ```text id="8i0tr8"
 FrontendManager
@@ -556,7 +556,7 @@ FrontendManager
 ## Directiva principal
 
 ```volt id="slpv7t"
-@frontend
+@tailwind-vite
 ```
 
 ---
@@ -572,12 +572,12 @@ FrontendManager
 ## Helper principal
 
 ```php id="k1usn4"
-frontend()
+tailwind_vite()
 ```
 
 ---
 
-# Estado de integración
+# Estado de integraciÃƒÂ³n
 
 ```text id="rwwg5h"
 Status: Draft V1

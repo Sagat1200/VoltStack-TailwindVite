@@ -22,12 +22,21 @@
     "require-dev": {
         "phpunit/phpunit": "^13.1"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../voltstack-framework",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "autoload": {
         "psr-4": {
             "VoltStack\\TailwindVite\\": "src"
         },
         "files": [
-            "src/Helpers/frontend.php"
+            "src/Helpers/tailwind_vite.php"
         ]
     },
     "autoload-dev": {

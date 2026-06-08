@@ -10,11 +10,11 @@ voltstack/tailwind-vite
 
 ---
 
-# Descripción General
+# DescripciÃƒÂ³n General
 
 VoltStack TailwindVite es el paquete oficial encargado de integrar TailwindCSS y Vite dentro del ecosistema VoltStack.
 
-El paquete proporciona una experiencia frontend moderna, ligera y desacoplada para aplicaciones VoltStack, permitiendo configurar automáticamente:
+El paquete proporciona una experiencia frontend moderna, ligera y desacoplada para aplicaciones VoltStack, permitiendo configurar automÃƒÂ¡ticamente:
 
 * TailwindCSS
 * Vite
@@ -25,11 +25,11 @@ El paquete proporciona una experiencia frontend moderna, ligera y desacoplada pa
 * Asset Resolution
 * Development Server Integration
 
-El objetivo principal del paquete es ofrecer una integración frontend simple, rápida y consistente sin depender directamente del núcleo del framework.
+El objetivo principal del paquete es ofrecer una integraciÃƒÂ³n frontend simple, rÃƒÂ¡pida y consistente sin depender directamente del nÃƒÂºcleo del framework.
 
 ---
 
-# Filosofía del paquete
+# FilosofÃƒÂ­a del paquete
 
 VoltStack TailwindVite NO es:
 
@@ -39,7 +39,7 @@ VoltStack TailwindVite NO es:
 * un framework JavaScript
 * un sistema reactivo
 
-Su responsabilidad única es:
+Su responsabilidad ÃƒÂºnica es:
 
 > Proveer la infraestructura oficial de TailwindCSS + Vite para VoltStack.
 
@@ -51,10 +51,10 @@ Su responsabilidad única es:
 
 * Integrar TailwindCSS oficialmente en VoltStack
 * Integrar Vite como asset builder oficial
-* Automatizar configuración frontend
+* Automatizar configuraciÃƒÂ³n frontend
 * Proveer una experiencia DX moderna
 * Mantener desacoplamiento del core
-* Facilitar futura integración con:
+* Facilitar futura integraciÃƒÂ³n con:
 
   * Volt SPA Runtime
   * Volt SSR
@@ -63,18 +63,18 @@ Su responsabilidad única es:
 
 ---
 
-# Objetivos técnicos
+# Objetivos tÃƒÂ©cnicos
 
-* Generación automática de:
+* GeneraciÃƒÂ³n automÃƒÂ¡tica de:
 
   * vite.config.js
   * app.css
   * app.js
-* Registro automático de assets
+* Registro automÃƒÂ¡tico de assets
 * Soporte para HMR
-* Resolución automática de manifest
-* Sistema de detección de entorno
-* Integración con Volt/Views
+* ResoluciÃƒÂ³n automÃƒÂ¡tica de manifest
+* Sistema de detecciÃƒÂ³n de entorno
+* IntegraciÃƒÂ³n con Volt/Views
 * Compatibilidad futura con SSR
 
 ---
@@ -84,15 +84,15 @@ Su responsabilidad única es:
 ## Incluye
 
 * Instalador TailwindCSS
-* Configuración automática Vite
-* Integración frontend VoltStack
+* ConfiguraciÃƒÂ³n automÃƒÂ¡tica Vite
+* IntegraciÃƒÂ³n frontend VoltStack
 * Directiva Volt
 * Asset Resolver
 * Manifest Loader
 * Hot Reload Detection
 * Build Helpers
-* Configuración frontend
-* Publicación de archivos base
+* ConfiguraciÃƒÂ³n frontend
+* PublicaciÃƒÂ³n de archivos base
 
 ---
 
@@ -111,7 +111,7 @@ Su responsabilidad única es:
 * Native UI Engine
 * Tailwind plugins manager
 
-Estos sistemas serán manejados por paquetes independientes.
+Estos sistemas serÃƒÂ¡n manejados por paquetes independientes.
 
 ---
 
@@ -119,14 +119,14 @@ Estos sistemas serán manejados por paquetes independientes.
 
 ```text
 FrontendManager
-│
-├── ViteManager
-├── TailwindManager
-├── AssetManager
-├── ManifestManager
-├── HotReloadManager
-├── EnvironmentDetector
-└── FrontendConfigRepository
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ViteManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ TailwindManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ AssetManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ManifestManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ HotReloadManager
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ EnvironmentDetector
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ FrontendConfigRepository
 ```
 
 ---
@@ -135,51 +135,51 @@ FrontendManager
 
 ```text
 src/
-│
-├── Commands/
-│   └── FrontendInstallCommand.php
-│
-├── Config/
-│   └── frontend.php
-│
-├── Contracts/
-│   ├── AssetResolverInterface.php
-│   ├── ManifestLoaderInterface.php
-│   └── FrontendManagerInterface.php
-│
-├── Directives/
-│   └── VoltFrontendDirective.php
-│
-├── Frontend/
-│   ├── FrontendManager.php
-│   ├── ViteManager.php
-│   ├── TailwindManager.php
-│   ├── AssetManager.php
-│   ├── ManifestManager.php
-│   ├── HotReloadManager.php
-│   └── EnvironmentDetector.php
-│
-├── Helpers/
-│   └── frontend.php
-│
-├── Providers/
-│   └── TailwindViteServiceProvider.php
-│
-├── Stubs/
-│   ├── vite.config.stub
-│   ├── app.css.stub
-│   ├── app.js.stub
-│   └── frontend.config.stub
-│
-└── Support/
-    ├── Manifest.php
-    ├── Asset.php
-    └── HotReload.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Commands/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ FrontendInstallCommand.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Config/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ frontend.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Contracts/
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ AssetResolverInterface.php
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ManifestLoaderInterface.php
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ FrontendManagerInterface.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Directives/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ VoltFrontendDirective.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Frontend/
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ FrontendManager.php
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ViteManager.php
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ TailwindManager.php
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ AssetManager.php
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ ManifestManager.php
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ HotReloadManager.php
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ EnvironmentDetector.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Helpers/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ frontend.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Providers/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ TailwindViteServiceProvider.php
+Ã¢â€â€š
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Stubs/
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ vite.config.stub
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ app.css.stub
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ app.js.stub
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ frontend.config.stub
+Ã¢â€â€š
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ Support/
+    Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Manifest.php
+    Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ Asset.php
+    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ HotReload.php
 ```
 
 ---
 
-# Configuración oficial
+# ConfiguraciÃƒÂ³n oficial
 
 ## frontend.php
 
@@ -209,12 +209,12 @@ return [
 
 ---
 
-# API pública
+# API pÃƒÂºblica
 
 ## Facade
 
 ```php
-Volt::frontend();
+Volt::tailwind_vite();
 ```
 
 ---
@@ -222,25 +222,25 @@ Volt::frontend();
 ## Helper
 
 ```php
-frontend();
+tailwind_vite();
 ```
 
 ---
 
-# Métodos principales
+# MÃƒÂ©todos principales
 
 ```php
-frontend()->asset('app.js');
+tailwind_vite()->asset('app.js');
 
-frontend()->asset('app.css');
+tailwind_vite()->asset('app.css');
 
-frontend()->manifest();
+tailwind_vite()->manifest();
 
-frontend()->isDevelopment();
+tailwind_vite()->isDevelopment();
 
-frontend()->isProduction();
+tailwind_vite()->isProduction();
 
-frontend()->hotReload();
+tailwind_vite()->hotReload();
 ```
 
 ---
@@ -248,7 +248,7 @@ frontend()->hotReload();
 # Directiva Blade
 
 ```volt
-@voltFrontend
+@tailwind-vite
 ```
 
 ---
@@ -271,29 +271,29 @@ La directiva debe:
 
 ```text
 View
-  ↓
-@voltFrontend
-  ↓
+  Ã¢â€ â€œ
+@tailwind-vite
+  Ã¢â€ â€œ
 HotReloadManager
-  ↓
+  Ã¢â€ â€œ
 Vite Dev Server
-  ↓
+  Ã¢â€ â€œ
 Assets HMR
 ```
 
 ---
 
-## Producción
+## ProducciÃƒÂ³n
 
 ```text
 View
-  ↓
-@voltFrontend
-  ↓
+  Ã¢â€ â€œ
+@tailwind-vite
+  Ã¢â€ â€œ
 ManifestManager
-  ↓
+  Ã¢â€ â€œ
 manifest.json
-  ↓
+  Ã¢â€ â€œ
 Compiled Assets
 ```
 
@@ -301,7 +301,7 @@ Compiled Assets
 
 # Sistema de Manifest
 
-El paquete utilizará manifest Vite para:
+El paquete utilizarÃƒÂ¡ manifest Vite para:
 
 * localizar assets compilados
 * resolver hashes
@@ -311,7 +311,7 @@ El paquete utilizará manifest Vite para:
 
 ---
 
-# Filosofía arquitectónica
+# FilosofÃƒÂ­a arquitectÃƒÂ³nica
 
 ## Principios
 
@@ -333,7 +333,7 @@ Cada sistema debe ser independiente:
 
 ---
 
-### 3. Preparado para evolución
+### 3. Preparado para evoluciÃƒÂ³n
 
 La arquitectura debe permitir integrar posteriormente:
 
@@ -347,9 +347,9 @@ sin romper compatibilidad.
 
 ---
 
-# Integración futura
+# IntegraciÃƒÂ³n futura
 
-Este paquete será utilizado posteriormente por:
+Este paquete serÃƒÂ¡ utilizado posteriormente por:
 
 * voltstack/spa-runtime
 * voltstack/hydration
@@ -371,10 +371,10 @@ php volt frontend:install
 # Responsabilidades del comando
 
 * Publicar archivos frontend
-* Generar configuración
+* Generar configuraciÃƒÂ³n
 * Preparar estructura resources/
 * Preparar estructura build/
-* Configurar integración VoltStack
+* Configurar integraciÃƒÂ³n VoltStack
 
 ---
 
@@ -382,14 +382,14 @@ php volt frontend:install
 
 ```text
 resources/
-├── css/
-│   └── app.css
-│
-└── js/
-    └── app.js
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ css/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ app.css
+Ã¢â€â€š
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ js/
+    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ app.js
 
 public/
-└── build/
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ build/
 ```
 
 ---
