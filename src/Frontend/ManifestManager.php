@@ -26,7 +26,7 @@ final class ManifestManager implements ManifestLoaderInterface
             return $this->manifest;
         }
 
-        $manifestPath = $this->app->basePath((string) $this->app->config('frontend.manifest', 'public/build/.vite/manifest.json'));
+        $manifestPath = $this->app->basePath((string) $this->app->config('tailwind-vite.manifest', 'public/build/.vite/manifest.json'));
 
         if (! is_file($manifestPath)) {
             return $this->manifest = [];

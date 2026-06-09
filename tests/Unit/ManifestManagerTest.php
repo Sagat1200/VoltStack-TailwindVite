@@ -65,7 +65,7 @@ final class ManifestManagerTest extends TestCase
         );
 
         $app = new Application($this->basePath);
-        $app->make(ConfigRepository::class)->set('frontend.manifest', 'public/build/.vite/manifest.json');
+        $app->make(ConfigRepository::class)->set('tailwind-vite.manifest', 'public/build/.vite/manifest.json');
         $manager = new ManifestManager($app);
 
         self::assertTrue($manager->has('resources/js/app.js'));

@@ -19,7 +19,7 @@ final class FrontendManager implements FrontendManagerInterface
 
     public function render(string|array|null $entry = null): string
     {
-        if (! (bool) $this->app->config('frontend.enabled', true)) {
+        if (! (bool) $this->app->config('tailwind-vite.enabled', true)) {
             return '';
         }
 
@@ -136,7 +136,7 @@ final class FrontendManager implements FrontendManagerInterface
 
     private function publicAssetUrl(string $path): string
     {
-        $buildUrl = rtrim((string) $this->app->config('frontend.build_url', '/build'), '/');
+        $buildUrl = rtrim((string) $this->app->config('tailwind-vite.build_url', '/build'), '/');
 
         return $buildUrl . '/' . ltrim($path, '/');
     }
@@ -170,7 +170,7 @@ final class FrontendManager implements FrontendManagerInterface
             return array_values(array_unique($normalized));
         }
 
-        $defaultEntry = trim((string) $this->app->config('frontend.input.js', 'resources/js/app.js'));
+        $defaultEntry = trim((string) $this->app->config('tailwind-vite.input.js', 'resources/js/app.js'));
 
         return $defaultEntry === '' ? [] : [$defaultEntry];
     }

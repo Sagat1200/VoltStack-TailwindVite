@@ -51,13 +51,21 @@ final class TailwindViteServiceProvider extends ServiceProvider
     {
         /** @var ConfigRepository $config */
         $config = $this->app->make(ConfigRepository::class);
-        $existing = $config->get('frontend', []);
+        $existing = $config->get('tailwind-vite', []);
+        $legacy = $config->get('frontend', []);
 
         if (! is_array($existing)) {
             $existing = [];
         }
 
-        $config->set('frontend', array_replace_recursive($this->defaultConfiguration(), $existing));
+        if (! is_array($legacy)) {
+            $legacy = [];
+        }
+
+        $merged = array_replace_recursive($this->defaultConfiguration(), $legacy, $existing);
+
+        $config->set('tailwind-vite', $merged);
+        $config->set('frontend', $merged);
     }
 
     /**

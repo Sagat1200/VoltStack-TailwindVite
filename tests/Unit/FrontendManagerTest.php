@@ -16,7 +16,7 @@ final class FrontendManagerTest extends TestCase
     public function test_it_renders_hot_reload_tags_in_development(): void
     {
         $app = new Application(sys_get_temp_dir());
-        $app->make(ConfigRepository::class)->set('frontend.input.js', 'resources/js/app.js');
+        $app->make(ConfigRepository::class)->set('tailwind-vite.input.js', 'resources/js/app.js');
 
         $manager = new FrontendManager(
             new FrontendManagerManifestStub([]),
@@ -34,8 +34,8 @@ final class FrontendManagerTest extends TestCase
     {
         $app = new Application(sys_get_temp_dir());
         $config = $app->make(ConfigRepository::class);
-        $config->set('frontend.input.js', 'resources/js/app.js');
-        $config->set('frontend.build_url', '/build');
+        $config->set('tailwind-vite.input.js', 'resources/js/app.js');
+        $config->set('tailwind-vite.build_url', '/build');
 
         $manager = new FrontendManager(
             new FrontendManagerManifestStub([

@@ -39,7 +39,7 @@ final class FrontendInstallCommandTest extends TestCase
         );
 
         self::assertSame(0, $exitCode);
-        self::assertFileExists($this->basePath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'frontend.php');
+        self::assertFileExists($this->basePath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'tailwind-vite.php');
         self::assertFileExists($this->basePath . DIRECTORY_SEPARATOR . 'vite.config.js');
         self::assertFileExists($this->basePath . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'app.css');
         self::assertFileExists($this->basePath . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'app.js');

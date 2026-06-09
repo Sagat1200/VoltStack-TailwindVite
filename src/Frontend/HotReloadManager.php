@@ -22,9 +22,9 @@ final class HotReloadManager implements HotReloadDetectorInterface
             return $this->active;
         }
 
-        $host = (string) $this->app->config('frontend.dev_server.host', '127.0.0.1');
-        $port = (int) $this->app->config('frontend.dev_server.port', 5173);
-        $timeout = max(0.05, ((int) $this->app->config('frontend.dev_server.timeout_ms', 150)) / 1000);
+        $host = (string) $this->app->config('tailwind-vite.dev_server.host', '127.0.0.1');
+        $port = (int) $this->app->config('tailwind-vite.dev_server.port', 5173);
+        $timeout = max(0.05, ((int) $this->app->config('tailwind-vite.dev_server.timeout_ms', 150)) / 1000);
 
         $connection = @fsockopen($host, $port, $errorCode, $errorMessage, $timeout);
 
@@ -49,9 +49,9 @@ final class HotReloadManager implements HotReloadDetectorInterface
 
     private function baseUrl(): string
     {
-        $scheme = $this->app->config('frontend.dev_server.https', false) ? 'https' : 'http';
-        $host = (string) $this->app->config('frontend.dev_server.host', '127.0.0.1');
-        $port = (int) $this->app->config('frontend.dev_server.port', 5173);
+        $scheme = $this->app->config('tailwind-vite.dev_server.https', false) ? 'https' : 'http';
+        $host = (string) $this->app->config('tailwind-vite.dev_server.host', '127.0.0.1');
+        $port = (int) $this->app->config('tailwind-vite.dev_server.port', 5173);
 
         return sprintf('%s://%s:%d/', $scheme, $host, $port);
     }

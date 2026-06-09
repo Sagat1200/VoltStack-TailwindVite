@@ -92,7 +92,7 @@ final class FrontendInstallCommand extends Command
     private function publishableFiles(): array
     {
         return [
-            'config/frontend.php' => 'frontend.stub.php',
+            'config/tailwind-vite.php' => 'tailwind-vite.stub.php',
             'package.json' => 'package.stub.json',
             'vite.config.js' => 'vite.config.stub.js',
             'postcss.config.js' => 'postcss.config.stub.js',
