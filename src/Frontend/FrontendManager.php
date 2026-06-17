@@ -57,11 +57,19 @@ final class FrontendManager implements FrontendManagerInterface
     private function renderDevelopment(array $entries): string
     {
         $tags = [
-            sprintf('<script type="module" src="%s"></script>', e($this->hotReload->clientUrl())),
+            sprintf(
+                '<script type="module" src="%s" data-volt-head-key="%s"></script>',
+                e($this->hotReload->clientUrl()),
+                e('vite-client'),
+            ),
         ];
 
         foreach ($entries as $entry) {
-            $tags[] = sprintf('<script type="module" src="%s"></script>', e($this->hotReload->assetUrl($entry)));
+            $tags[] = sprintf(
+                '<script type="module" src="%s" data-volt-head-key="%s"></script>',
+                e($this->hotReload->assetUrl($entry)),
+                e($this->headKey('dev-script', $entry)),
+            );
         }
 
         return implode(PHP_EOL, $tags);
@@ -91,11 +99,19 @@ final class FrontendManager implements FrontendManagerInterface
         $tags = [];
 
         foreach (array_keys($styles) as $href) {
-            $tags[] = sprintf('<link rel="stylesheet" href="%s">', e($href));
+            $tags[] = sprintf(
+                '<link rel="stylesheet" href="%s" data-volt-head-key="%s">',
+                e($href),
+                e($this->headKey('style', $href)),
+            );
         }
 
         foreach (array_keys($scripts) as $src) {
-            $tags[] = sprintf('<script type="module" src="%s"></script>', e($src));
+            $tags[] = sprintf(
+                '<script type="module" src="%s" data-volt-head-key="%s"></script>',
+                e($src),
+                e($this->headKey('script', $src)),
+            );
         }
 
         return implode(PHP_EOL, $tags);
@@ -139,6 +155,11 @@ final class FrontendManager implements FrontendManagerInterface
         $buildUrl = rtrim((string) $this->app->config('tailwind-vite.build_url', '/build'), '/');
 
         return $buildUrl . '/' . ltrim($path, '/');
+    }
+
+    private function headKey(string $prefix, string $value): string
+    {
+        return $prefix . ':' . sha1($value);
     }
 
     /**
