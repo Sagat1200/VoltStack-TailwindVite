@@ -70,5 +70,20 @@ final class ManifestManagerTest extends TestCase
 
         self::assertTrue($manager->has('resources/js/app.js'));
         self::assertSame('assets/app.123.js', $manager->entry('resources/js/app.js')['file']);
+
+        sleep(2);
+
+        file_put_contents(
+            $this->basePath . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'build' . DIRECTORY_SEPARATOR . '.vite' . DIRECTORY_SEPARATOR . 'manifest.json',
+            json_encode([
+                'resources/js/app.js' => [
+                    'file' => 'assets/app.456.js',
+                    'css' => ['assets/app.456.css'],
+                    'isEntry' => true,
+                ],
+            ], JSON_THROW_ON_ERROR)
+        );
+
+        self::assertSame('assets/app.456.js', $manager->entry('resources/js/app.js')['file']);
     }
 }

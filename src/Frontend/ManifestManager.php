@@ -15,20 +15,32 @@ final class ManifestManager implements ManifestLoaderInterface
      */
     private ?array $manifest = null;
 
+    private ?string $manifestPath = null;
+
+    private ?int $manifestMTime = null;
+
     public function __construct(
         private readonly Application $app,
-    ) {
-    }
+    ) {}
 
     public function load(): array
     {
-        if ($this->manifest !== null) {
+        $manifestPath = $this->app->basePath((string) $this->app->config('tailwind-vite.manifest', 'public/build/.vite/manifest.json'));
+        clearstatcache(true, $manifestPath);
+        $manifestMTime = is_file($manifestPath) ? filemtime($manifestPath) : null;
+
+        if (
+            $this->manifest !== null
+            && $this->manifestPath === $manifestPath
+            && $this->manifestMTime === $manifestMTime
+        ) {
             return $this->manifest;
         }
 
-        $manifestPath = $this->app->basePath((string) $this->app->config('tailwind-vite.manifest', 'public/build/.vite/manifest.json'));
+        $this->manifestPath = $manifestPath;
+        $this->manifestMTime = $manifestMTime;
 
-        if (! is_file($manifestPath)) {
+        if ($manifestMTime === null) {
             return $this->manifest = [];
         }
 
