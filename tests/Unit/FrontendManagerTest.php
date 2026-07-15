@@ -54,6 +54,38 @@ final class FrontendManagerTest extends TestCase
         self::assertStringContainsString('/build/assets/app.123.css', $html);
         self::assertStringContainsString('/build/assets/app.123.js', $html);
     }
+
+    public function test_it_renders_modulepreload_tags_for_manifest_imports_in_production(): void
+    {
+        $app = new Application(sys_get_temp_dir());
+        $config = $app->make(ConfigRepository::class);
+        $config->set('tailwind-vite.input.js', 'resources/js/app.js');
+        $config->set('tailwind-vite.build_url', '/build');
+
+        $manager = new FrontendManager(
+            new FrontendManagerManifestStub([
+                'resources/js/app.js' => [
+                    'file' => 'assets/app.123.js',
+                    'css' => ['assets/app.123.css'],
+                    'imports' => ['vendor-chunk.js'],
+                    'isEntry' => true,
+                ],
+                'vendor-chunk.js' => [
+                    'file' => 'assets/vendor.123.js',
+                    'isEntry' => false,
+                ],
+            ]),
+            new FrontendManagerHotReloadStub(false),
+            $app,
+        );
+
+        $html = $manager->render();
+
+        self::assertStringContainsString('rel="modulepreload"', $html);
+        self::assertStringContainsString('/build/assets/vendor.123.js', $html);
+        self::assertStringNotContainsString('<script type="module" src="/build/assets/vendor.123.js"', $html);
+        self::assertStringContainsString('<script type="module" src="/build/assets/app.123.js"', $html);
+    }
 }
 
 final class FrontendManagerManifestStub implements ManifestLoaderInterface

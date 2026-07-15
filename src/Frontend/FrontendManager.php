@@ -82,6 +82,7 @@ final class FrontendManager implements FrontendManagerInterface
     {
         $styles = [];
         $scripts = [];
+        $modulePreloads = [];
         $visited = [];
 
         foreach ($entries as $entry) {
@@ -89,14 +90,22 @@ final class FrontendManager implements FrontendManagerInterface
                 continue;
             }
 
-            $this->collectEntryAssets($entry, $styles, $scripts, $visited);
+            $this->collectEntryAssets($entry, $styles, $scripts, $modulePreloads, $visited, true);
         }
 
-        if ($styles === [] && $scripts === []) {
+        if ($styles === [] && $scripts === [] && $modulePreloads === []) {
             return '';
         }
 
         $tags = [];
+
+        foreach (array_keys($modulePreloads) as $href) {
+            $tags[] = sprintf(
+                '<link rel="modulepreload" href="%s" crossorigin data-volt-head-key="%s">',
+                e($href),
+                e($this->headKey('modulepreload', $href)),
+            );
+        }
 
         foreach (array_keys($styles) as $href) {
             $tags[] = sprintf(
@@ -120,11 +129,28 @@ final class FrontendManager implements FrontendManagerInterface
     /**
      * @param array<string, true> $styles
      * @param array<string, true> $scripts
+     * @param array<string, true> $modulePreloads
      * @param array<string, true> $visited
      */
-    private function collectEntryAssets(string $entry, array &$styles, array &$scripts, array &$visited): void
+    private function collectEntryAssets(string $entry, array &$styles, array &$scripts, array &$modulePreloads, array &$visited, bool $isRoot): void
     {
         if (isset($visited[$entry])) {
+            if ($isRoot) {
+                $payload = $this->manifestLoader->entry($entry);
+
+                foreach ($payload['css'] ?? [] as $cssFile) {
+                    if (is_string($cssFile) && $cssFile !== '') {
+                        $styles[$this->publicAssetUrl($cssFile)] = true;
+                    }
+                }
+
+                $file = $payload['file'] ?? null;
+
+                if (is_string($file) && $file !== '') {
+                    $scripts[$this->publicAssetUrl($file)] = true;
+                }
+            }
+
             return;
         }
 
@@ -133,7 +159,7 @@ final class FrontendManager implements FrontendManagerInterface
 
         foreach ($payload['imports'] ?? [] as $import) {
             if (is_string($import) && $this->manifestLoader->has($import)) {
-                $this->collectEntryAssets($import, $styles, $scripts, $visited);
+                $this->collectEntryAssets($import, $styles, $scripts, $modulePreloads, $visited, false);
             }
         }
 
@@ -146,7 +172,13 @@ final class FrontendManager implements FrontendManagerInterface
         $file = $payload['file'] ?? null;
 
         if (is_string($file) && $file !== '') {
-            $scripts[$this->publicAssetUrl($file)] = true;
+            $url = $this->publicAssetUrl($file);
+
+            if ($isRoot) {
+                $scripts[$url] = true;
+            } else {
+                $modulePreloads[$url] = true;
+            }
         }
     }
 
