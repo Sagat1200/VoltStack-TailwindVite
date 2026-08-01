@@ -13,13 +13,20 @@ final class HotReloadManager implements HotReloadDetectorInterface
 
     public function __construct(
         private readonly Application $app,
-    ) {
-    }
+    ) {}
 
     public function isActive(): bool
     {
         if ($this->active !== null) {
             return $this->active;
+        }
+
+        if (
+            defined('PHPUNIT_COMPOSER_INSTALL') ||
+            defined('PHPUNIT_VERSION') ||
+            $this->app->environment() === 'testing'
+        ) {
+            return $this->active = false;
         }
 
         $host = (string) $this->app->config('tailwind-vite.dev_server.host', '127.0.0.1');
@@ -31,7 +38,26 @@ final class HotReloadManager implements HotReloadDetectorInterface
         if (is_resource($connection)) {
             fclose($connection);
 
-            return $this->active = true;
+            $context = stream_context_create([
+                'http' => [
+                    'method' => 'GET',
+                    'timeout' => $timeout,
+                    'ignore_errors' => true,
+                    'header' => "Accept: */*\r\n",
+                ],
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ]);
+
+            $client = @file_get_contents($this->clientUrl(), false, $context);
+
+            if (is_string($client) && str_contains($client, 'createHotContext')) {
+                return $this->active = true;
+            }
+
+            return $this->active = false;
         }
 
         return $this->active = false;
